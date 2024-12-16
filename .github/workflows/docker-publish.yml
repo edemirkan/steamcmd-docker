@@ -69,9 +69,9 @@ jobs:
           tags: |
             type=ref,event=branch,suffix=-{{ sha }}
             type=semver,pattern={{version}},prefix=wine-,enable=${{ matrix.wine }}
-            type=semver,pattern={{version}},prefix=nowine-,enable=${{ !matrix.wine }}
-            type=raw,value=nowine-latest,enable=${{ !matrix.wine }}
             type=raw,value=wine-latest,enable=${{ matrix.wine }}
+            type=semver,pattern={{version}},enable=${{ !matrix.wine }}
+            type=raw,value=latest,enable=${{ !matrix.wine }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       - name: Build and push Docker image
